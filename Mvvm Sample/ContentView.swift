@@ -23,17 +23,33 @@ struct ContentView: View {
                     .padding()
             }
             List(vm.itemList) { item in
-                
+
                 HStack {
                     Text(item.name)
                     Spacer()
                     Text(item.description)
                 }
+                .swipeActions {
+                    Button(role: .destructive) {
+                        vm.deleteItem(item: item)
+                    } label: {
+                        Label("Delete", systemImage: "trash.fill")
+                    }
+                }
+                .swipeActions (edge: .leading) {
+                    Button {
+                        
+                    } label: {
+                        Label("Edit", systemImage: "square.and.pencil")
+                    }
+                    .tint(.green)
+                }
+                .padding()
             }
             .listStyle(.plain)
             .background(.thinMaterial)
-            
-            Button("add item"){
+
+            Button("add item") {
                 vm.addItem()
             }
             .buttonStyle(.bordered)

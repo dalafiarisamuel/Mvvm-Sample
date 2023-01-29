@@ -28,5 +28,12 @@ extension ContentView {
                 itemList.insert(randomItem, at: 0)
             }
         }
+        
+        func deleteItem(item: Item){
+            withAnimation {
+                let index = itemList.firstIndex(of: item)
+                itemList.remove(at: index!)
+            }
+        }
     }
 }
